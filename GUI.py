@@ -8,11 +8,14 @@ Created on Fri Jul 12 16:30:21 2024
 import tkinter as tk
 import cv2
 from PIL import Image, ImageTk
+import os
 
 count = 0
 
 def takeImage():
     global count
+    if not os.path.isdir("webcamImages"):
+        os.mkdir("webcamImages")
     _, frame = webcam.read()
     cv2.imwrite(f"webcamImages/{count}.jpg", frame)
     count+=1
